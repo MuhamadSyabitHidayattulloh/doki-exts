@@ -180,7 +180,7 @@ internal class Ikiru(context: MangaLoaderContext) :
 	private fun parseMangaList(doc: Document): List<Manga> {
 		val mangaList = mutableListOf<Manga>()
 
-		doc.select("body > div").forEach { divElement ->
+		doc.select("div.group, div[class*=\"overflow-hidden\"]").forEach { divElement ->
 			val mainLink = divElement.selectFirst("a[href*='/manga/']") ?: return@forEach
 			val href = mainLink.attrAsRelativeUrl("href")
 
